@@ -1,28 +1,61 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <!-- 
+    <v-toolbar app>
+      <v-toolbar-title class="headline text-uppercase">
+        <span>Vuetify</span>
+        <span class="font-weight-light">MATERIAL DESIGN</span>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn
+        flat
+        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        target="_blank"
+      >
+        <span class="mr-2">Latest Release</span>
+      </v-btn>
+    </v-toolbar>
+    -->
+    <v-content>
+      <!-- <TableRolly/> -->
+      <v-layout row wrap>
+        <Autocomplete @dataSelect="dataAutocompleteOrigin" :data="2"/>
+        <Autocomplete @dataSelect="dataAutocompleteDestiny" :data="dataOrigin"/>
+        <DatePicker />
+        <DatePicker/>
+      </v-layout>
+      
+      <DataTable :origin="dataOrigin" :destiny="dataDestiny"/> 
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld'
+import Autocomplete from './components/Autocomplete'
+import DataTable from './components/DataTable'
+import DatePicker from './components/DatePicker'
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
-    HelloWorld
+    Autocomplete,
+    DataTable,
+    DatePicker
+  },
+  data () {
+    return {
+      dataOrigin: '',
+      dataDestiny: ''
+    }
+  },
+  methods: {
+    dataAutocompleteOrigin: function (data) {
+      this.dataOrigin = data
+    },
+    dataAutocompleteDestiny: function (data) {
+      this.dataDestiny = data
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

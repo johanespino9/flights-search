@@ -1,0 +1,44 @@
+[
+    {
+      "airline": "American Airlines",
+      "flightType": "Round Trip",
+      "classCategory": "Premium Economy",
+      "classLetter": "I",
+      "iata": "PER"
+    },
+    {
+      "airline": "TACA Airlines",
+      "flightType": "One Way",
+      "classCategory": "Economy",
+      "classLetter": "K",
+      "iata": "USA"
+    },
+    {
+      "airline": "Aerolineas Argentinas",
+      "flightType": "RoundTrip",
+      "classCategory": "First",
+      "classLetter": "A",
+      "iata": "USA"
+    },
+    {
+      "airline": "Delta Airlines",
+      "flightType": "Round Trip",
+      "classCategory": "Premium Economy",
+      "classLetter": "I",
+      "iata": "PER"
+    },
+    {
+      "airline": "Blue Airlines",
+      "flightType": "Round Trip",
+      "classCategory": "Bussiness",
+      "classLetter": "F",
+      "iata": "USA"
+    },
+    {
+      "airline": "Air Canada",
+      "flightType": "One Way",
+      "classCategory": "Economy",
+      "classLetter": "J",
+      "iata": "USA"
+    }
+  ]
