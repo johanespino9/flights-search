@@ -19,10 +19,12 @@
     <v-content>
       <!-- <TableRolly/> -->
       <v-layout row wrap>
-        <Autocomplete @dataSelect="dataAutocompleteOrigin" :data="2"/>
-        <Autocomplete @dataSelect="dataAutocompleteDestiny" :data="dataOrigin"/>
+        <Autocomplete @dataSelect="dataAutocompleteOrigin" data="" />
+        <Autocomplete @dataSelect="dataAutocompleteDestiny" data="" />
         <DatePicker />
         <DatePicker/>
+        <Select />
+        <Select />
       </v-layout>
       
       <DataTable :origin="dataOrigin" :destiny="dataDestiny"/> 
@@ -32,21 +34,45 @@
 
 <script>
 // import HelloWorld from './components/HelloWorld'
+import store from './store'
 import Autocomplete from './components/Autocomplete'
 import DataTable from './components/DataTable'
 import DatePicker from './components/DatePicker'
+import Select from './components/Select'
 
 export default {
   name: 'App',
+  store,
   components: {
     Autocomplete,
     DataTable,
-    DatePicker
+    DatePicker,
+    Select
   },
   data () {
     return {
-      dataOrigin: '',
-      dataDestiny: ''
+      dataOrigin: [],
+      dataDestiny: []
+    }
+  },
+  created (){
+    
+    this.dataOrigin.push(this.sflights[0].origin)
+    this.dataOrigin.push(this.sflights[1].origin)
+    this.dataOrigin.push(this.sflights[2].origin)
+    this.dataOrigin.push(this.sflights[3].origin)
+    
+    this.dataDestiny.push(this.sflights[0].destination)
+    this.dataDestiny.push(this.sflights[1].destination)
+    this.dataDestiny.push(this.sflights[2].destination)
+    this.dataDestiny.push(this.sflights[3].destination)
+  },
+  mounted (){
+    alert(this.dataOrigin)
+  },
+  computed: {
+    sflights() {
+      return this.$store.state.flights;
     }
   },
   methods: {

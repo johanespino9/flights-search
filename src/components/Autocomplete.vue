@@ -1,12 +1,12 @@
 <template>
   <v-flex xs3>
-  <v-card>
-    <v-card-text > 
+  <v-card >
+    <v-card-text> 
       <v-autocomplete
+
         :hint="!isEditing ? 'Click the icon to edit' : 'Click the icon to save'"
-        :items="originSearch"
-        item-text="name"
-        item-value="id"
+        :items="flights"
+        item-text="origin"
         v-model="data"
         :readonly="!isEditing"
         :label="`State — ${isEditing ? 'Editable' : 'Readonly'}`"
@@ -28,8 +28,7 @@
 </template>
 
 <script>
-  import { EventBus } from '../plugins/event-bus.js';
-
+  
   export default {
     props : {
       data: String
@@ -38,30 +37,46 @@
       return {
         isEditing: true,
         model: null,
-        originSearch: [ 
-          {
-            'id': 1,
-            'name': 'LIM'
-          },
-          {
-            'id': 2,
-            'name': 'MAD'
-          },
-          {
-            'id': 3,
-            'name': 'AEP'
-          },
-          {
-            'id': 4,
-            'name': 'EZE'
-          }
-        ]
+        flights: [],
+        user: '',
+        count: null
+      }
+    },
+    created() {
+      //this.fetchFlights();
+      //this.count = this.$store.state.count;
+      //alert(this.sflights[0].origin)
+      
+      this.getOriginApi();
+      // alert(this.originSearch[0].origin)
+    },
+    computed: {
+      sflights() {
+        return this.$store.state.flights;
       }
     },
     methods: {
       emitMethod () {
         this.$emit('dataSelect', this.data);
-      }
+      },
+      fetchFlights() {
+        window.store.dispatch('fetchFlights');
+      } 
+       ,getOriginApi: function() {
+        // const baseURI = 'https://swapi.co/api/people/'
+        const baseURI = '../dummies/loquesea.json'
+        this.axios.get(baseURI)
+        .then((result) => {
+          
+            this.flights = result.data
+            //console.log(result.data)
+            //alert(result.data)
+        })
+        .catch(error => {
+          alert(error)
+        })
+        .finally(() => '')
+      } 
   }
   }
 </script>

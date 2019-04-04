@@ -1,5 +1,7 @@
 [
     {
+      "origin": "LIM",
+      "destination": "MIA",
       "airline": "American Airlines",
       "flightType": "Round Trip",
       "classCategory": "Premium Economy",
@@ -7,27 +9,35 @@
       "iata": "PER"
     },
     {
+      "origin": "MAD",
+      "destination": "LIM",
       "airline": "TACA Airlines",
       "flightType": "One Way",
       "classCategory": "Economy",
       "classLetter": "K",
-      "iata": "USA"
+      "iata": "PER"
     },
     {
+      "origin": "EZE",
+      "destination": "LIM",
       "airline": "Aerolineas Argentinas",
       "flightType": "RoundTrip",
       "classCategory": "First",
       "classLetter": "A",
-      "iata": "USA"
+      "iata": "PER"
     },
     {
+      "origin": "MAD",
+      "destination": "MIA",
       "airline": "Delta Airlines",
       "flightType": "Round Trip",
       "classCategory": "Premium Economy",
       "classLetter": "I",
-      "iata": "PER"
+      "iata": "USA"
     },
     {
+      "origin": "AEP",
+      "destination": "MIA",
       "airline": "Blue Airlines",
       "flightType": "Round Trip",
       "classCategory": "Bussiness",
@@ -35,6 +45,8 @@
       "iata": "USA"
     },
     {
+      "origin": "NYC",
+      "destination": "MIA",
       "airline": "Air Canada",
       "flightType": "One Way",
       "classCategory": "Economy",
