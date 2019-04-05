@@ -17,17 +17,18 @@
     </v-toolbar>
     -->
     <v-content>
+      <v-container>
       <!-- <TableRolly/> -->
       <v-layout row wrap>
-        <Autocomplete @dataSelect="dataAutocompleteOrigin" data="" />
-        <Autocomplete @dataSelect="dataAutocompleteDestiny" data="" />
-        <DatePicker />
-        <DatePicker/>
+        <Search/>
+        <Select />
+        <Select />
         <Select />
         <Select />
       </v-layout>
       
       <DataTable :origin="dataOrigin" :destiny="dataDestiny"/> 
+      </v-container>
     </v-content>
   </v-app>
 </template>
@@ -35,37 +36,26 @@
 <script>
 // import HelloWorld from './components/HelloWorld'
 import store from './store'
-import Autocomplete from './components/Autocomplete'
 import DataTable from './components/DataTable'
-import DatePicker from './components/DatePicker'
 import Select from './components/Select'
+import Search from './components/Search'
 
 export default {
   name: 'App',
   store,
   components: {
-    Autocomplete,
     DataTable,
-    DatePicker,
-    Select
+    Select,
+    Search  
   },
   data () {
     return {
       dataOrigin: [],
-      dataDestiny: []
+      dataDestiny: [],
+      flights: []
     }
   },
   created (){
-    
-    this.dataOrigin.push(this.sflights[0].origin)
-    this.dataOrigin.push(this.sflights[1].origin)
-    this.dataOrigin.push(this.sflights[2].origin)
-    this.dataOrigin.push(this.sflights[3].origin)
-    
-    this.dataDestiny.push(this.sflights[0].destination)
-    this.dataDestiny.push(this.sflights[1].destination)
-    this.dataDestiny.push(this.sflights[2].destination)
-    this.dataDestiny.push(this.sflights[3].destination)
   },
   mounted (){
     alert(this.dataOrigin)
@@ -81,7 +71,22 @@ export default {
     },
     dataAutocompleteDestiny: function (data) {
       this.dataDestiny = data
-    }
+    },
+    getOriginApi: function() {
+        // const baseURI = 'https://swapi.co/api/people/'
+        const baseURI = '../dummies/loquesea.json'
+        this.axios.get(baseURI)
+        .then((result) => {
+          
+            this.flights = result.data
+            //console.log(result.data)
+            //alert(result.data)
+        })
+        .catch(error => {
+          alert(error)
+        })
+        .finally(() => '')
+      }
   }
 }
 </script>

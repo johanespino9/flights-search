@@ -3,13 +3,11 @@
   <v-card >
     <v-card-text> 
       <v-autocomplete
-
-        :hint="!isEditing ? 'Click the icon to edit' : 'Click the icon to save'"
         :items="flights"
         item-text="origin"
         v-model="data"
         :readonly="!isEditing"
-        :label="`State — ${isEditing ? 'Editable' : 'Readonly'}`"
+        :label="data"
         persistent-hint
         prepend-icon="mdi-city"
         @change="emitMethod"
@@ -39,15 +37,18 @@
         model: null,
         flights: [],
         user: '',
-        count: null
+        count: null,
+        sharedata: ''
       }
     },
     created() {
+
       //this.fetchFlights();
       //this.count = this.$store.state.count;
       //alert(this.sflights[0].origin)
-      
+      this.encontrarData();
       this.getOriginApi();
+      
       // alert(this.originSearch[0].origin)
     },
     computed: {
@@ -56,11 +57,14 @@
       }
     },
     methods: {
-      emitMethod () {
+      emitMethod() {
         this.$emit('dataSelect', this.data);
       },
       fetchFlights() {
         window.store.dispatch('fetchFlights');
+      },
+      encontrarData(){
+        this.sharedata = this.store.state;
       } 
        ,getOriginApi: function() {
         // const baseURI = 'https://swapi.co/api/people/'

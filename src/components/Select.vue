@@ -1,14 +1,15 @@
 <template>
-    <v-container fluid grid-list-xl>
-        <v-layout wrap align-center>
-            <v-flex xs12 sm6 d-flex>
+  <v-flex xs12 sm2 d-flex center>
+    
+      <v-card-text> 
                 <v-select
                 :items="classCategory"
                 label="Category"
                 ></v-select>
+      </v-card-text>
+   
             </v-flex>
-        </v-layout>
-    </v-container>
+      
 </template>
 
 <script>
